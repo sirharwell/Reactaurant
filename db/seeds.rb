@@ -1,7 +1,7 @@
 100.times do
   Product.create(
-    name: Faker::Food.product_name,
-    description: Faker::Food.sentence,
-    price: Faker::Food.price.to_f,
+    name: Faker::Food.dish,
+    description: Faker::Food.description,
+    price: Faker::Commerce.price.to_f,
   )
 end
