@@ -47,7 +47,7 @@ class Dashboard extends React.Component {
     let { showForm } = this.state;
     return (
       <div>
-        <h2>Products</h2>
+        <h2>Food Items</h2>
         <button onClick={this.toggleForm}>{ showForm ? 'Hide' : 'Show' } form</button>
         { showForm ? this.form() : this.show() }
 
