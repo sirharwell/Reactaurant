@@ -2,6 +2,9 @@ import React from 'react';
 import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios';
 import Form from './Form';
+import { Card, Icon, Image, Grid } from 'semantic-ui-react'
+
+
 
 class Dashboard extends React.Component {
   state = { products: [], showForm: false }
@@ -11,19 +14,6 @@ class Dashboard extends React.Component {
       .then( res => this.setState({ products: res.data }) )
   }
 
-  show() {
-    let { products } = this.state;
-    return (
-      <ul>
-       { products.map( p =>
-           <li key={p.id}>
-             <Link to={`/products/${p.id}`}>{p.name}</Link>
-           </li>
-         )
-       }
-     </ul>
-   )
- }
 
   form() {
     return <Form submit={this.submit}/>
@@ -43,6 +33,31 @@ class Dashboard extends React.Component {
     })
   }
 
+
+    show() {
+      let { products } = this.state;
+      return (
+        <div class="ui grid">
+         { products.map( p =>
+            <div key={p.id}>
+              <br/>
+                  <Card>
+                <Image src="http://lorempixel.com/640/480/food/"/>
+                <Card.Content>
+                  <Card.Header>
+                    <Link to={`/products/${p.id}`}>{p.name}</Link>
+                  </Card.Header>
+                  <Card.Description>
+                    {p.price}
+                  </Card.Description>
+                </Card.Content>
+              </Card>
+              <br/>
+            </div>
+          )}
+        </div>
+        )}
+
   render() {
     let { showForm } = this.state;
     return (
@@ -52,6 +67,8 @@ class Dashboard extends React.Component {
         { showForm ? this.form() : this.show() }
 
       </div>
+
+
     )
   }
 }
