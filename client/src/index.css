@@ -4,3 +4,7 @@ body {
 	background: #FFF;
 	font-family: 'Source Sans Pro', sans-serif;
 }
+background {
+	background-image: url('images/16.jpg');
+  background-size: cover;
+}
